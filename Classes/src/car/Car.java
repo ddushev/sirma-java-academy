@@ -1,3 +1,5 @@
+package car;
+
 import java.util.Scanner;
 
 public class Car {
@@ -5,7 +7,7 @@ public class Car {
   private String model;
   private int horsepower;
 
-//  public Car(String brand, String model, int horsepower) {
+//  public Car.Car(String brand, String model, int horsepower) {
 //    this.brand = brand;
 //    this.model = model;
 //    this.horsepower = horsepower;
