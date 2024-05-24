@@ -1,5 +1,3 @@
-package carconstructor;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -57,7 +55,7 @@ public class CarConstructors {
   }
 }
 
-class Main{
+class CarConstructorsTest{
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int n = Integer.parseInt(sc.nextLine());
