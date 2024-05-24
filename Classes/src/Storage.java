@@ -2,12 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
-  private static int capacity;
-  private static final ArrayList<Product> storage = new ArrayList<>();
-  private static double totalCost;
+  private int capacity;
+  private final ArrayList<Product> storage;
+  private double totalCost;
 
   public Storage(int capacity) {
-    Storage.capacity = capacity;
+    this.capacity = capacity;
+    this.storage = new ArrayList<>();
+    this.totalCost = 0;
   }
 
   public void addProducts(String name, double price, int quantity) {
@@ -17,15 +19,15 @@ public class Storage {
     storage.add(newProduct);
   }
 
-  public static int getCapacity(){
+  public int getCapacity(){
     return capacity;
   }
 
-  public static double getTotalCost(){
+  public double getTotalCost(){
     return totalCost;
   }
 
-  public static String getProducts(){
+  public String getProducts(){
     StringBuilder output = new StringBuilder();
     for(Product product: storage) {
       output.append(product.getProduct()).append(System.lineSeparator());
@@ -67,14 +69,16 @@ class StorageTest {
           storage.addProducts(commands[1], Double.parseDouble(commands[2]), Integer.parseInt(commands[3]));
           break;
         case "Get": {
-          System.out.println(Storage.getProducts());
+          System.out.println(storage.getProducts());
+          break;
         }
         case "Print":
           if(commands[1].equals("capacity")) {
-            System.out.println(Storage.getCapacity());
+            System.out.println(storage.getCapacity());
           }else if(commands[1].equals("totalCost")) {
-            System.out.println(Storage.getTotalCost());
+            System.out.println(storage.getTotalCost());
           }
+          break;
       }
       input = sc.nextLine();
     }
