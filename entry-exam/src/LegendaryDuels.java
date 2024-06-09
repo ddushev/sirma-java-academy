@@ -14,13 +14,17 @@ public class LegendaryDuels {
     movesMap.put("!", "!");
 
     for (String move : sequence) {
-      if (movesMap.containsKey(move)) {
-        if (!movesStack.isEmpty() && movesStack.peek().equals("!")) {
-          movesStack.pop();
-          continue;
-        }
+      if (movesMap.containsKey(move) && !move.equals("!")) {
         movesStack.push(movesMap.get(move));
-      } else {
+      }else if(move.equals("!")) {
+        assert movesStack.peek() != null;
+        if(!movesStack.isEmpty() && movesStack.peek().equals(move)) {
+          movesStack.pop();
+        }else {
+          movesStack.push(move);
+        }
+      }
+        else {
         String counterMove = movesStack.pop();
         if (!counterMove.equals(move)) {
           System.out.println("Not Legendary");
@@ -28,6 +32,7 @@ public class LegendaryDuels {
         }
       }
     }
+
     if (movesStack.isEmpty()) {
       System.out.println("Legendary");
     } else {
